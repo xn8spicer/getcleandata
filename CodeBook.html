@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Codebook for the Human Activity Recognition Using Smartphones Data Set extract </title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Codebook for the Human Activity Recognition Using Smartphones Data Set extract </h1>
+
+<h4>Input raw data files:</h4>
+
+<ul>
+<li>features.txt</li>
+<li>activity_labels.txt</li>
+<li>test/subject_test.txt</li>
+<li>test/X_test.txt</li>
+<li>test/Y_test.txt</li>
+<li>train/subject_train.txt</li>
+<li>train/X_train.txt</li>
+<li>train/Y_train.txt</li>
+</ul>
+
+<h4>Processing script:</h4>
+
+<ul>
+<li>run_analysis.R</li>
+</ul>
+
+<h4>Output file:</h4>
+
+<ul>
+<li>myTidyData.csv</li>
+</ul>
+
+<h3>Description of Raw Data</h3>
+
+<p>Data was downloaded from <a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones">http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones</a></p>
+
+<h4>&ldquo;Features&rdquo; variables</h4>
+
+<p>The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals <code>tAcc-XYZ and tGyro-XYZ</code>. These time domain signals (prefix &#39;t&#39; to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (<code>tBodyAcc-XYZ and tGravityAcc-XYZ</code>) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. </p>
+
+<p>Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (<code>tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ</code>). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (<code>tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag</code>). </p>
+
+<p>Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing <code>fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag</code>. (Note the &#39;f&#39; to indicate frequency domain signals). </p>
+
+<p>These signals were used to estimate variables of the feature vector for each pattern:<br/>
+&#39;-XYZ&#39; is used to denote 3-axial signals in the X, Y and Z directions.</p>
+
+<pre><code>tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+</code></pre>
+
+<p>The set of variables that were estimated from these signals are listed below, ONLY THE FIRST TWO (mean and std) WERE USED IN THIS PROJECT: </p>
+
+<pre><code>mean(): Mean value  ** Selected for this project
+std(): Standard deviation ** Selected for this project
+mad(): Median absolute deviation 
+max(): Largest value in array
+min(): Smallest value in array
+sma(): Signal magnitude area
+energy(): Energy measure. Sum of the squares divided by the number of values. 
+iqr(): Interquartile range 
+entropy(): Signal entropy
+arCoeff(): Autorregresion coefficients with Burg order equal to 4
+correlation(): correlation coefficient between two signals
+maxInds(): index of the frequency component with largest magnitude
+meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+skewness(): skewness of the frequency domain signal 
+kurtosis(): kurtosis of the frequency domain signal 
+bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+angle(): Angle between to vectors.
+</code></pre>
+
+<p>Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:</p>
+
+<pre><code>gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean
+</code></pre>
+
+<h3>Processing</h3>
+
+<ol>
+<li>Merge the training and the test sets to create one data set.</li>
+<li>Extract only the measurements on the mean and standard deviation for each measurement. </li>
+<li>Use descriptive activity names to name the activities in the data set</li>
+<li>Appropriately label the data set with descriptive activity names. </li>
+<li>Create a second, independent tidy data set with the average of each variable for each activity and each subject. </li>
+</ol>
+
+<h3>Description of Tidy Data</h3>
+
+<p>The unit of analysis for each row of data is Subject/Activity. It is sorted in Activity/SubjectID order.</p>
+
+<p>The data frame has 68 variables and 180 rows. </p>
+
+<p>Variable List:</p>
+
+<pre><code>##  [1] &quot;subjectID&quot;                        &quot;activity&quot;                        
+##  [3] &quot;tBodyAcc.mean.X.saMean&quot;           &quot;tBodyAcc.mean.Y.saMean&quot;          
+##  [5] &quot;tBodyAcc.mean.Z.saMean&quot;           &quot;tBodyAcc.std.X.saMean&quot;           
+##  [7] &quot;tBodyAcc.std.Y.saMean&quot;            &quot;tBodyAcc.std.Z.saMean&quot;           
+##  [9] &quot;tGravityAcc.mean.X.saMean&quot;        &quot;tGravityAcc.mean.Y.saMean&quot;       
+## [11] &quot;tGravityAcc.mean.Z.saMean&quot;        &quot;tGravityAcc.std.X.saMean&quot;        
+## [13] &quot;tGravityAcc.std.Y.saMean&quot;         &quot;tGravityAcc.std.Z.saMean&quot;        
+## [15] &quot;tBodyAccJerk.mean.X.saMean&quot;       &quot;tBodyAccJerk.mean.Y.saMean&quot;      
+## [17] &quot;tBodyAccJerk.mean.Z.saMean&quot;       &quot;tBodyAccJerk.std.X.saMean&quot;       
+## [19] &quot;tBodyAccJerk.std.Y.saMean&quot;        &quot;tBodyAccJerk.std.Z.saMean&quot;       
+## [21] &quot;tBodyGyro.mean.X.saMean&quot;          &quot;tBodyGyro.mean.Y.saMean&quot;         
+## [23] &quot;tBodyGyro.mean.Z.saMean&quot;          &quot;tBodyGyro.std.X.saMean&quot;          
+## [25] &quot;tBodyGyro.std.Y.saMean&quot;           &quot;tBodyGyro.std.Z.saMean&quot;          
+## [27] &quot;tBodyGyroJerk.mean.X.saMean&quot;      &quot;tBodyGyroJerk.mean.Y.saMean&quot;     
+## [29] &quot;tBodyGyroJerk.mean.Z.saMean&quot;      &quot;tBodyGyroJerk.std.X.saMean&quot;      
+## [31] &quot;tBodyGyroJerk.std.Y.saMean&quot;       &quot;tBodyGyroJerk.std.Z.saMean&quot;      
+## [33] &quot;tBodyAccMag.mean.saMean&quot;          &quot;tBodyAccMag.std.saMean&quot;          
+## [35] &quot;tGravityAccMag.mean.saMean&quot;       &quot;tGravityAccMag.std.saMean&quot;       
+## [37] &quot;tBodyAccJerkMag.mean.saMean&quot;      &quot;tBodyAccJerkMag.std.saMean&quot;      
+## [39] &quot;tBodyGyroMag.mean.saMean&quot;         &quot;tBodyGyroMag.std.saMean&quot;         
+## [41] &quot;tBodyGyroJerkMag.mean.saMean&quot;     &quot;tBodyGyroJerkMag.std.saMean&quot;     
+## [43] &quot;fBodyAcc.mean.X.saMean&quot;           &quot;fBodyAcc.mean.Y.saMean&quot;          
+## [45] &quot;fBodyAcc.mean.Z.saMean&quot;           &quot;fBodyAcc.std.X.saMean&quot;           
+## [47] &quot;fBodyAcc.std.Y.saMean&quot;            &quot;fBodyAcc.std.Z.saMean&quot;           
+## [49] &quot;fBodyAccJerk.mean.X.saMean&quot;       &quot;fBodyAccJerk.mean.Y.saMean&quot;      
+## [51] &quot;fBodyAccJerk.mean.Z.saMean&quot;       &quot;fBodyAccJerk.std.X.saMean&quot;       
+## [53] &quot;fBodyAccJerk.std.Y.saMean&quot;        &quot;fBodyAccJerk.std.Z.saMean&quot;       
+## [55] &quot;fBodyGyro.mean.X.saMean&quot;          &quot;fBodyGyro.mean.Y.saMean&quot;         
+## [57] &quot;fBodyGyro.mean.Z.saMean&quot;          &quot;fBodyGyro.std.X.saMean&quot;          
+## [59] &quot;fBodyGyro.std.Y.saMean&quot;           &quot;fBodyGyro.std.Z.saMean&quot;          
+## [61] &quot;fBodyAccMag.mean.saMean&quot;          &quot;fBodyAccMag.std.saMean&quot;          
+## [63] &quot;fBodyBodyAccJerkMag.mean.saMean&quot;  &quot;fBodyBodyAccJerkMag.std.saMean&quot;  
+## [65] &quot;fBodyBodyGyroMag.mean.saMean&quot;     &quot;fBodyBodyGyroMag.std.saMean&quot;     
+## [67] &quot;fBodyBodyGyroJerkMag.mean.saMean&quot; &quot;groupID&quot;
+</code></pre>
+
+<h3>Notes on Variables listed above:</h3>
+
+<p>Variable <code>subjectID</code> numeric ID for 30 subjects.</p>
+
+<p>Variable <code>activity</code> a factor with 6 levels</p>
+
+<ol>
+<li>WALKING</li>
+<li>WALKING_UPSTAIRS</li>
+<li>WALKING_DOWNSTAIRS</li>
+<li>SITTING</li>
+<li>STANDING</li>
+<li>LAYING</li>
+</ol>
+
+<p>Names of the time/frequency feature measurements were constructed by the authors using standard abbreviations. These are described above in the description of the raw data.</p>
+
+<blockquote>
+<p><strong>Only the variables for the mean and std were selected  for this  project.   The original variable names were   appended with the suffix &ldquo;.saMean&rdquo; to distinguish them  from the variables in the raw data.</strong></p>
+</blockquote>
+
+<p>Variable <code>groupID</code> identifies subjects in the &ldquo;train&rdquo; or &ldquo;test&rdquo; group.</p>
+
+</body>
+
+</html>
+

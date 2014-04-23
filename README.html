@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Getting and Cleaning Data Project</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Getting and Cleaning Data Project</h1>
+
+<h3>Requirements for <code>run_analysis.R</code> script</h3>
+
+<ul>
+<li>Download data from <a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a></li>
+<li>Merges the training and the test sets to create one data set.</li>
+<li>Extracts only the measurements on the mean and standard deviation for each measurement. </li>
+<li>Uses descriptive activity names to name the activities in the data set</li>
+<li>Appropriately labels the data set with descriptive activity names. </li>
+<li>Creates a second, independent tidy data set with the average of each variable for each activity and each subject. </li>
+</ul>
+
+<h3>Description of script</h3>
+
+<p>The script requires the <code>plyr</code> and <code>stringr</code> packages.
+Only the following files from the downloaded data bundle are actually used:</p>
+
+<ul>
+<li>features.txt</li>
+<li>activity_labels.txt</li>
+<li>test/subject_test.txt</li>
+<li>test/X_test.txt</li>
+<li>test/Y_test.txt</li>
+<li>train/subject_train.txt</li>
+<li>train/X_train.txt</li>
+<li>train/Y_train.txt</li>
+</ul>
+
+<p>Step 1: Check for required packages <code>plyr</code> and <code>stringr</code> and install if necessary.</p>
+
+<p>Step 2: Process the names of the time/frequency frequency variables in the <code>features.txt</code> file, removing punctuation.</p>
+
+<p>Step 3: Read in the features data for the test and train groups from <code>test/X_test.txt</code> and <code>train/X_train.txt</code> respectively and apply the column names from Step 2 to create a dataframe for each sample group.</p>
+
+<p>Step 4: Scan the column names and select only the columns representing the mean or std from each data frame.</p>
+
+<p>Step 5: The activities are stored in the files <code>test/Y_test.txt</code> and <code>train/Y_train.txt</code> files as numerics.  Read those data and use the labeling information in the file <code>activity_label.txt</code> file to create a labelled factor variable named <code>activity</code>. Add this to the data frame for each sample group.</p>
+
+<p>Step 6: Obtain the subject ID numbers from the files <code>test/subject_test.txt</code> and <code>train/subject_train.txt</code> and add them to the data frames for each sample group.</p>
+
+<p>Step 7: Merge the test and training data frames.</p>
+
+<p>Step 8: Using the <code>aggregate</code> function, calculate the mean for each time/frequency feature for each subject and activity.   Append <code>.saMean</code> to each column name to distinguish it as the calculated mean.</p>
+
+<p>Step 9: Add a new variable <code>groupID</code> to identify from which sample group each subject was pulled.</p>
+
+<p>Step 10: Write the dataframe as a .csv file with the name <code>myTidyData.csv</code>.</p>
+
+</body>
+
+</html>
+
